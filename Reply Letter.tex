@@ -1,0 +1,174 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[palatino,gill,courier]{altfont}
+
+%\usepackage{mathrsfs,amsmath}%added
+
+%\usepackage{multicol,multienum}
+%\usepackage[numbers,sort&compress]{natbib}
+
+\usepackage{bm}
+\usepackage{color}
+\addtolength{\textwidth}{2cm} \addtolength{\textheight}{2cm}
+\setlength{\marginparwidth}{73pt} \setlength{\oddsidemargin}{6pt}
+\setlength{\topmargin}{0pt}
+\renewcommand\thefigure{R\arabic{figure}}
+\renewcommand\theequation{R\arabic{equation}}
+\begin{document}
+
+\title{\textbf{Reply Letter}}
+\author{}
+\maketitle
+
+
+\noindent \textbf{Dear Prof. Masahiro Yukawa, Ms. Adrienne Fisher, \\
+Editors of IEEE Transactions on Signal Processing,}
+\\ \newline
+
+We thank you and all reviewers for the comments concerning our paper T-SP-24342-2018 ``Noise Benefits in Combined Nonlinear Bayesian Estimators,'' by Fabing Duan, Yan Pan, Fran\c{c}ois Chapeau-Blondeau and Derek Abbott.
+
+We have addressed the comments raised by Reviewers and the corresponding changes are highlighted in blue in the revised manuscript. The responses to the reviewers¡¯ comments are listed as follows.
+
+\noindent--------------------------------------------------------------------------------------------------------------------
+%----------------------
+\newline
+\noindent \textbf{Response to the comment of Reviewer 1}
+\\\newline
+\textbf{Comment 1: ``Page 2, Theorem 1: In order to ensure $R_m^o < R_{m-1}^o$, we need to ensure that $C$ is positive definite. Therefore, degenerate estimators like $\hat\theta_m(x) = {\rm const}$ which give the same estimate independent of the observation $x$ cannot be used in the combiner. Hence, a condition which ensures that $C$ is positive definite should be added to Theorem 1.''}
+\\\newline
+\textbf{Reply}: Thank you for this good suggestion. Yes, the positive definite condition of covariance matrix $\mathbf{C}$ guarantees the establishment of \emph{Theorem} 1. Otherwise, for instance, if we add a degenerate estimator like $\hat\theta_m(x) = {\rm const}$ to the existing estimator $\hat{\theta}_{\rm LC}$ with the order $m-1$, the covariance matrix $\mathbf{C}$ will have a zero diagonal element $C_{mm}=0$. The addition of this degenerate estimator $\hat\theta_m(x)$, as indicated in Appendix A, does not contribute to the decrease of the MSE $\mathcal{R}_m^o$, because $d_m=0$ in Eq.~(35) and $R_m^o = R_{m-1}^o$. Thus, the establishment of $R_m^o < R_{m-1}^o$ in \emph{Theorem} 1 needs the positive definite condition of covariance matrix $\mathbf{C}$.
+\\\newline
+\textbf{Change}: In Page 2, we added this condition in \emph{Theorem} 1 and Appendix A.
+\\\newline
+\textbf{Comment 2: `` Page 3, Corollary 4: This corollary shows that the MSE $R_\infty^o$ levels off as the derivative becomes zero for large noise variances. However, in my opinion this does not mean that $R_\infty^o$ will necessarily remain low for large noise variances $\sigma_\eta^2$. In the example of Fig. 2b, I would expect that the MSE for $m = \infty$ goes up again if the added noise level $\sigma_\eta^2$ is increased further as is the case for the combiners with finite $m$. Please explain what you mean by "has a plateau of the local extremum for a large added noise level" and why this ensures that the LC estimator has a wide range of added noise levels.''}
+\\\newline
+\textbf{Reply}: This suggestion is very interesting.
+
+1) For the limiting case $m \rightarrow\infty$, the MSE curves are specially plotted in the new Fig. 2~(b) for $\hat{\theta}_{\rm LC}$ constructed form the suboptimal MAP estimator $\hat{\theta}_{\rm map}$ in Eq.~(20) and the quantizer $\hat{\theta}_{\rm qt}$ of Eq.~(22) within a suitable scale. It is clearly seen in Fig. 2~(b) that, as the added noise level $\sigma_\eta$ increases, the MSE $\mathcal{R}_m^{o}$ first drops to the global minimum, and then goes up again, and finally reaches stable values for very large noise levels $\sigma_\eta$.
+
+2) In Corollary 4 and Appendix F, it is proved the derivative of $\mathcal{R}_\infty^{o}$ with respect to $\sigma_\eta$ asymptotically goes to zero for a large added noise level $\sigma_\eta$. This means that the MSE $\mathcal{R}_\infty^{o}$ will tend to a local extremum and remain almost unchanged for very large noise levels $\sigma_\eta$.
+
+3) Yes, this Corollary 4 does not mean that $R_\infty^o$ will necessarily remain low for large noise variances $\sigma_\eta^2$. We here illustratively show that $R_\infty^o$ remains at a fairly low value of $0.25$ in Fig.~2 (a)--(c) over a broad range of reasonable conditions. This robust characteristic is utilized in Fig.~2~(d) to improve the designed estimator $\hat{\theta}_{\rm LC}$ instead of finding the optimal noise level.
+\\\newline
+\textbf{Changes}:
+
+1) In this revised version, in order to observe the behavior of the MSE $R_\infty^o$ more closely, we add a new figure of Fig. 2~(c) and redraw $R_\infty^o$ over a suitable scope. The original Fig. 2~(c) in the previous version is listed as Fig. 2~(d).
+
+2) Below Corollary 4, we emphasize that $R_\infty^o$ can reach a stable value for a
+large added noise level, but does not indicate that this stable value is very low.  In the typical conditions considered in example 1, this stable value is rather low and leads to improvement of $\hat{\theta}_{\rm LC}$ without optimally tuning the noise level.
+\\\newline
+\textbf{Comment 3: Page 3: The equation for the MAP in (20) is wrong. For the case $x > a$, the MAP should return $a$ and not $1$. Therefore, also the comment "which is a special case of $\hat\theta_{\rm map}(x)$ when $a = 0$ after (22) is not correct. For $a = 0$, we have $\hat\theta_{\rm map}(x) = 0$ for all $x$.}
+\\\newline
+\textbf{Reply}: Yes, this is a mistake. For the case $x > a$, the MAP estimator should return $a$. In the theoretical calculation of Fig.~2 (a), we use the correct expression of the MAP estimator so that the mistake has no impact on the subsequent characterization. It is noted that the quantizer in Eq.~(22) is not a special case of $\hat\theta_{\rm map}(x)$.
+\\\newline
+\textbf{Changes}:
+
+1) We corrected Eq.~(20) in this revised version.
+
+2) After Eq.~(22), we deleted the comment `which is a special case of $\hat\theta_{\rm map}(x)$ when $a=0$'.
+
+3) All numerical results of the MAP estimator $\hat\theta_{\rm map}(x)$ and the designed estimator $\hat\theta_{\rm LC}(x)$ based on the MAP estimator are checked.
+\\\newline
+\textbf{Comment 4: Page 4: Why is the constraint $f_\eta(\eta) \ne \delta(\eta)$ added to the optimization problem (23)? I think you could solve (23) without this constraint. If $f_\eta(\eta) = \delta(\eta)$ then no improvement through noise addition is possible. Otherwise, you know that you can improve upon the original estimator.}
+\\\newline
+\textbf{Reply}: Yes, this suggestion is good. In this revised version, the previous equation number (23) becomes (24). The constraint $f_\eta(\eta) \ne \delta(\eta)$ in Eq.~(24) is unnecessary. As the reviewer suggested, if $f_\eta(\eta) = \delta(\eta)$, we know that no improvement through noise addition is possible.
+\\\newline
+\textbf{Changes}:
+
+1) In this revised version, we deleted this unnecessary constraint $f_\eta(\eta) \ne \delta(\eta)$ in Eq.~(24).
+
+2) We use the constrained nonlinear optimization methods to find the approximation of the optimal added noise PDF. For different orders $m$ of the estimator $\hat{\theta}_{\rm LC}$, the related results of the optimal added noise PDF are presented in new Table I and Fig.~4 (see Example 3).
+\\\newline
+\textbf{Comment 5: Page 8: In the derivation in (42), a term $\eta$ is missing as $\partial (1/\sigma_\eta)f(\eta/\sigma_\eta) = -1/\sigma_\eta^2 * f(\eta/\sigma_\eta) - \eta/\sigma_\eta^3 * f'(\eta/\sigma_\eta)$.}
+\\\newline
+\textbf{Reply}: Thanks. In this revised version, the previous equation numbers (42)-(43) become (46)-(47). We correct the derivation $\partial f(\eta,\sigma_\eta)/\partial \sigma_\eta$ in Eq.~(46), and prove that Corollary $4$ is still valid.
+\\\newline
+\textbf{Change}:
+
+In Appendix F, we re-derive Eq.~(46) with the correct derivation $\partial f(\eta,\sigma_\eta)/\partial \sigma_\eta$. Also, some missing partial derivative symbols are complemented.
+\\\newline
+\textbf{Comment 6: Page 2, Sec. 2: The considered parameter model is quite simple ($x = \theta + \xi$), i.e., a scalar parameter $\theta $ is directly observed in $x$. Would it be possible to extend the theoretical analysis in Sec. 2 to, e.g., the linear model $\mathbf{x }= \mathbf{H }\bm{\theta} + \mathbf{\xi}$ where $\mathbf{x}$, $\bm{\theta}$ and $\mathbf{\xi}$ are vectors and $\mathbf{H }$ is a matrix?}
+\\\newline
+\textbf{Reply}: Yes, it is possible to extend the theoretical analysis in Sec.~2.
+Assuming the unknown $k\times 1$ parameter vector $\bm{\vartheta}=[\vartheta_1,\vartheta_2,\cdots,\vartheta_k]^{\top}$ is with known mean vector ${\rm E}(\bm{\vartheta})$ and covariance matrix $\mathbf{C}_{\bm{\vartheta}}$, and the $N\times 1$ observation vector $\mathbf{x}=[x_1,x_2,\cdots,x_N]^{\top}$ is modeled as
+$$\mathbf{x}= \mathbf{H}\bm{\vartheta}+{\bm \xi},$$
+where the observation matrix $\mathbf{H}=[\mathbf{h}_1^{\top},\mathbf{h}_2^{\top},\cdots,\mathbf{h}_N^{\top}]^{\top}$ with its $1\times k$ row vectors $\mathbf{h}_n$ and the $N\times 1$ noise vector ${\bm \xi}=[\xi_1,\xi_2,\cdots,\xi_N]^{\top}$ with the common distribution $f_\xi$ for mutually independent components $\xi_n$. Then, the scalar observation is
+$$x_n=\mathbf{h}_n {\bm \theta}+\xi_n,$$
+which accords to the simple model of Eq.~(1), and can be also analyzed by the theoretical framework developed in Sec.~2 with the parameter $\theta$ replaced by $\mathbf{h}_n {\bm \vartheta}$ for $n=1,2,\cdots,N$. Combing $N$ Bayesian scalar estimators $\hat{\vartheta}_{\rm LC,n}$ of Eq.~(54), we finally obtain the Bayesian vector estimate $\hat{\bm \vartheta}$ of Eq.~(56) for the vector parameter ${\bm \vartheta}$.
+\\\newline
+\textbf{Changes}:
+
+1) In the section of Discussion, we add a paragraph to explain the possibility of extending the theoretical analysis in Sec.~2 to the vector parameter model.
+
+2) A new Appendix G is added for obtaining the Bayesian vector estimate $\hat{\bm \vartheta}$ of Eq.~(56) for the vector parameter ${\bm \vartheta}$.
+\\\newline
+\textbf{Comment 7: Page 3, Fig. 2a: Please add an explanation why the LC estimator exhibits a quite stable improvement for a large range of added noise levels whereas the NE estimator is only optimal for a small region of good $\sigma_\eta$. This difference in behavior is not obvious as both estimators are closely related (see (14)).}
+\\\newline
+\textbf{Reply}:
+
+1) In the new Fig.~2(b) of this revised version, it is seen that, in a suitable scope of the MSE, the MSE of the LC estimator also reaches an optimal (minimum) value for a small region of good $\sigma_\eta$, and then goes up again, and finally exhibits a stable value for large added noise levels. This feature is the same for the NE estimator, as shown in Figs.~2(a) and~(b).
+
+2) From Eq.~(15) (Eq.~(14) in the previous version), it is seen that, at each added noise level $\sigma_\eta$, the LC estimator, compared with the NE estimator, has one more optimal coefficient $w^o$ of Eq.~(17). For a given added noise level $\sigma_\eta$, the optimal coefficient $w^o$ of Eq.~(17) measures in fact the cross-correlation between the centralized parameter $\theta-{\rm E}_\theta(\theta)$ and the normalized NE estimator $\bigl(\hat{\theta}_{\rm NE}(x)-{\rm E}_x(\hat{\theta}_{\rm NE})\bigr)/{\rm E}_{x}\bigl[\bigl(\hat{\theta}_{\rm NE}(x)-{\rm E}_x(\hat{\theta}_{\rm NE})\bigr)^2\bigr]$. By using this extra coefficient at its optimal value $w^o$, it is demonstrated in Eq.~(43) in Appendix D that
+the LC estimator, compared with the NE estimator, always presents a better or at lest equivalent MSE, as shown in Fig.~2(a), (b) and (c).
+\\\newline
+\textbf{Changes}:
+
+1) New Fig.~2(b) is added for better observing the MSE of the LC estimator.
+
+2) Before Eq.(22), we present an explanation of the difference between the NE estimator and the LC estimator and the merit of the LC estimator.
+
+
+---------------------------------------------------------------------------------------------------------------
+\newline
+\noindent \textbf{Response to the comment of Reviewer 2}
+
+We thank the Reviewer 2 for his/her very positive appreciation.
+
+
+---------------------------------------------------------------------------------------------------------------
+\newline
+\noindent \textbf{Response to the comment of Reviewer 3}
+\\\newline
+\textbf{Comment:  My concern is that they have not investigated characteristics of additive noises, which is very crucial for the completeness of the manuscript. I think the study has the merit, but they have to investigate the additive noises comprehensively to make the manuscript worth being published.}
+\\\newline
+\textbf{Reply}:Yes, the characteristics of the additive noise are important. There are two additive noises in the study:
+
+\textbf{a}) The background noise $\xi(t)$ which is imposed by the environment.
+Our initial approach was to take it as a Gaussian noise since this
+circumstance is very often met in practice and is therefore of great
+practical relevance. In addition, to respond to the reviewer's comment, we now discuss how
+the approach extends to a non-Gaussian background noise $\xi(t)$, and treat
+an example showing that the noise-benefit effect is preserved in such condition.
+Mew Example 4 shows the improvement of the MSE of $\hat{\theta}_{\rm LC}$ for the non-Gaussian (Laplacian) background noise $\xi(t)$, and the approximation PDF form $\widetilde{f}_\eta(\eta)$ of the optimal added noise $\eta$ is also plotted in the new Fig.~4 (blue dashed line). {\color{blue}We also note that, for the zero-symmetric scale-family added noise $\eta(t)$, the conclusions of \emph{Corollaries} 4 and~5 are applicable for any type of background noise $\xi(t)$ (Gaussian or non-Gaussian).}
+
+\textbf{b}) The noise $\eta(t)$ which is purposefully added so as to obtain
+an improvement of the estimators.
+Our initial approach was to show that there exists interesting
+and tractable choices for the characteristics of the added noise $\eta(t)$
+which make such improvement effective.
+{\color{blue}To respond to the reviewer's comment, we add a new Example 2 for explaining the \emph{Corollary}~5 by exploiting the characteristics of the added generalized Gaussian noise $\eta(t)$. We now go further and explicitly address
+the optimization problem of Eq. (24) that determines the optimal characteristics
+of the added noise $\eta(t)$ to maximize the benefit, with a new Example 4. For different numbers $m$ of $\hat{\theta}_{\rm LC}$, the corresponding results of approximated optimal PDF $\widetilde{f}_\eta(\eta)$ are listed in the new Table I. For the limiting case of $m\rightarrow \infty$, an approximation PDF form $\widetilde{f}_\eta(\eta)$ of the optimal added noise $\eta(t)$ is also shown in the new Fig.~4 (red solid line). We emphasize that, for an arbitrary random parameter $\theta$ buried in any type of the background noise $\xi(t)$, the approximation PDF form $\widetilde{f}_\eta(\eta)$ of optimal added noise $\eta(t)$ can be employed to obtain a better MSE of $\hat{\theta}_{\rm LC}$ than that achieved by a given type of added noise $\eta(t)$ by only optimizing its level $\sigma_\eta$.
+}
+\\\newline
+\textbf{Changes}:
+
+{\color{blue}1) Considering the non-Gaussian characteristic of the additive background noise $\xi(t)$, we add a new Example 4 to show the improvement of the MSE of $\hat{\theta}_{\rm LC}$ for the non-Gaussian (Laplacian) noise $\xi(t)$. Under this circumstances, an approximation PDF form of the optimal added noise $\eta(t)$ is obtained in the new Fig.~4.
+
+2) In order to explore the characteristics of the added noise $\eta(t)$, we first add the new \emph{Corollary} 5 and its proof of Appendix~G for determining the noise-enhanced effect in quantizer arrays via the zero-symmetric scale-family added noise $\eta(t)$, and the illustrative MSE curves are shown in the new Fig.~3 by Example 2. We also employ an approximation form $\widetilde{f}_\eta(\eta)$ with finite Gaussian window functions in Eq.~(25) to approach to the optimal added noise PDF that minimizes the MSE of $\hat{\theta}_{\rm LC}$. The sequential quadratic programming and the particle-swarm optimization methods are designed as in the supplement file. A new Example 3, new Table I and an illustrative graph in Fig.~4 are added for investigating the characteristics of the optimal noise PDF of added noise $\eta(t)$.
+
+3) In new Examples 3 and 4, we also emphasize that, for other estimators $\hat{\theta}_i$, different prior PDF $f_\theta$ and background noise PDF $f_\xi$, the characteristics of added noise $\eta$ can be optimized in the same way with the methodology we have described.}
+
+------------------------------------------------------------------------------------------------
+
+We thank the editor and reviewers for their help in improving this manuscript. Please find the attached revised version of the paper.
+\\\newline
+\noindent Best regards,
+\\\newline
+\noindent Yours sincerely,
+\\\newline
+\noindent Authors: Fabing Duan, Yan Pan, Fran\c{c}ois Chapeau-Blondeau and Derek Abbott
+
+\end{document}
